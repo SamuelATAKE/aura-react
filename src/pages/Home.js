@@ -1,12 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import SimpleNav from "../Components/SimpleNav";
 import NavMobile from "../Components/NavMobile";
 import Footer from "../Components/Footer";
+import { useNavigate } from "react-router-dom";
 // import "../assets/css/nav.css";
+import emailjs from "@emailjs/browser";
+import { PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID } from "../configs/variables";
+import { toast } from "react-toastify";
 // import "../assets/css/index.css";
 // import "../assets/css/section.css";
 
 const Home = () => {
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [email, setEmail] = useState("");
+  const [entreprise, setEntreprise] = useState();
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (nom.length < 3) {
+      toast("Le nom est invalide");
+    } else if (prenom.length < 3) {
+      toast("Le prénom est invalide");
+    } else if (email.length < 5) {
+      toast("Adresse mail invalide");
+    } else if (message.length < 5) {
+      toast("Message trop court");
+    } else {
+      const templateParams = {
+        from_name: entreprise
+          ? `${prenom} ${nom} - ${entreprise}`
+          : `${prenom} ${nom}`,
+        from_email: email,
+        to_name: "Equipe Aura",
+        message: message,
+      };
+
+      console.log("TemplateData: ", templateParams);
+
+      emailjs
+        .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+        .then((response) => {
+          console.log(response.data);
+          setNom("");
+          setPrenom("");
+          setEmail("");
+          setEntreprise("");
+          setMessage("");
+          console.log("navigating");
+          navigate("/message");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <>
       <SimpleNav />
@@ -106,19 +158,31 @@ const Home = () => {
             />
           </div>
           <div class="home_contact_brand_i">
-            <form action="" class="home_contact_form_i">
-              <input class="input_i nom_i" type="text" placeholder="Nom" />
+            <form class="home_contact_form_i" onSubmit={handleSubmit}>
+              <input
+                class="input_i nom_i"
+                type="text"
+                placeholder="Nom"
+                onChange={(e) => setNom(e.target.value)}
+              />
               <input
                 class="input_i prenom_i"
                 type="text"
                 placeholder="Prénom"
+                onChange={(e) => setPrenom(e.target.value)}
               />
               <input
                 class="input_i email_i"
                 type="text"
                 placeholder="Entreprise (facultatif)"
+                onChange={(e) => setEntreprise(e.target.value)}
               />
-              <input class="input_i email_i" type="text" placeholder="Email" />
+              <input
+                class="input_i email_i"
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <textarea
                 name="message"
                 id="message"
@@ -126,8 +190,11 @@ const Home = () => {
                 cols="30"
                 rows="10"
                 placeholder="Message"
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
-              <button class="send_button_i">Envoyer</button>
+              <button class="send_button_i" type="submit">
+                Envoyer
+              </button>
             </form>
           </div>
         </section>
