@@ -4,11 +4,13 @@ import React from "react";
 import Footer from "../Components/Footer";
 import SimpleNavService from "../Components/SimpleNavService";
 import NavMobileService from "../Components/NavMobileService";
+import { useNavigate } from "react-router-dom";
 // import "../assets/css/nav_services.css";
 // import "../assets/css/index.css";
 // import "../assets/css/services.css";
 
 const Services = () => {
+  const navigate = useNavigate();
   return (
     <>
       <SimpleNavService />
@@ -122,7 +124,10 @@ const Services = () => {
           </div>
           <div class="row_s">
             <div class="card0_s"></div>
-            <div class="card0_s">
+            <div
+              class="contact-us_s"
+              onClick={() => navigate("/contactez-nous")}
+            >
               Nous contacter{" "}
               <svg
                 class="w-[148px] h-[48px] text-gray-800 dark:text-white"
@@ -168,7 +173,10 @@ const Services = () => {
                 pour vous aider à faire de votre vision une réalité.
               </p>
               <br />
-              <div class="contact-us_s">
+              <div
+                class="contact-us_s"
+                onClick={() => navigate("/contactez-nous")}
+              >
                 Nous contacter{" "}
                 <svg
                   class="w-[148px] h-[48px] text-gray-800 dark:text-white"
@@ -207,7 +215,10 @@ const Services = () => {
                 eﬃcace pour maintenir vos opérations en toute ﬂuidité.
               </p>
               <br />
-              <div class="contact-us_s">
+              <div
+                class="contact-us_s"
+                onClick={() => navigate("/contactez-nous")}
+              >
                 Nous contacter{" "}
                 <svg
                   class="w-[148px] h-[48px] text-gray-800 dark:text-white"

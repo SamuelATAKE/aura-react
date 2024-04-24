@@ -1752,9 +1752,12 @@
 
     .card_s p {
         font-size: 1.2rem !important;
-        width: 100% !important;
+        width: 90% !important;
     }
 
+    .card_s h3 {
+        font-size: 1.18rem !important;
+    }
 
     .support_technique_s img {
         margin-bottom: 100px;
@@ -2034,4 +2037,13 @@
     border-style: dashed;
     border-width: 5px;
     border-color: #f0d76a;
+}
+
+@media screen and (max-width: 460px) {
+    .card_s p {
+        width: 75%;
+        text-align: center;
+        display: inline-block;
+        font-size: 1.4rem;
+    }
 }
