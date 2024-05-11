@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'ClassicaPro';
+    src: url(../fonts/ClassicaPro-Light.ttf);
+}
+
+@font-face {
+    font-family: 'BlackerSansPro';
+    src: url(../fonts/BlackerSansPro-Extralight.ttf);
+}
+
+header {
+    background-image: url("../img/home.png");
+    border-radius: 0 0 5rem 5rem;
+}
+
+header img {
+    top: 0;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+
+header h2 {
+    top: 0;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'BlackerSansPro', sans-serif;
+    font-size: 4rem;
+}

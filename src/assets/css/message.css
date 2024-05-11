@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'ClassicaPro';
+    src: url(../fonts/ClassicaPro-Light.ttf);
+}
+
+@font-face {
+    font-family: 'BlackerSansPro';
+    src: url(../fonts/BlackerSansPro-Extralight.ttf);
+}
+
+.p1 {
+    font-size: 2rem;
+    display: inline;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.p2 {
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
+.ph {
+    font-size: 2.7rem;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .p1 {
+        font-size: 2rem;
+        display: inline-block;
+        justify-content: center;
+        margin-top: 100px !important;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+
+    .p2 {
+        font-size: 2rem;
+        margin-left: 10px;
+    }
+
+    .ph {
+        font-size: 2.7rem;
+        margin-left: 10px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
+}
